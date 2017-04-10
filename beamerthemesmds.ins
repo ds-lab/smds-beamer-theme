@@ -1,0 +1,33 @@
+\input docstrip.tex
+\keepsilent
+\askforoverwritefalse
+\usedir{tex/latex/smds}
+
+\generate{\file{beamerthemesmds.sty}{%
+    \from{beamerthemesmds.dtx}{package}}}
+\generate{\file{beamerinnerthemesmds.sty}{%
+    \from{beamerinnerthemesmds.dtx}{package}}}
+\generate{\file{beamerouterthemesmds.sty}{%
+    \from{beamerouterthemesmds.dtx}{package}}}
+\generate{\file{beamercolorthemesmds.sty}{%
+    \from{beamercolorthemesmds.dtx}{package}}}
+\generate{\file{beamerfontthemesmds.sty}{%
+    \from{beamerfontthemesmds.dtx}{package}}}
+
+\obeyspaces
+\Msg{**************************************************************}
+\Msg{*                                                            *}
+\Msg{* To finish the installation you have to move the following  *}
+\Msg{* files into a directory searched by TeX:                    *}
+\Msg{*                                                            *}
+\Msg{*     beamerthemesmds.sty                                    *}
+\Msg{*     beamerinnerthemesmds.sty                               *}
+\Msg{*     beamerouterthemesmds.sty                               *}
+\Msg{*     beamerfontthemesmds.sty                                *}
+\Msg{*     beamercolorthemesmds.sty                               *}
+\Msg{*                                                            *}
+\Msg{* Happy TeXing!                                              *}
+\Msg{*                                                            *}
+\Msg{**************************************************************}
+
+\endbatchfile
