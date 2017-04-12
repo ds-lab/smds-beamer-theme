@@ -1,0 +1,35 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamercolorthemesmds}[2017/04/10 v1.0 SMDS color theme]
+
+\RequirePackage{xcolor}
+
+%% Color names
+% \begin{itemize}
+% \item SMDS Corporate Design blue
+\definecolor{smdsblue}{RGB}{0, 69, 134}     % General
+% \item Colors for shaded vertical margin bar
+\definecolor{shadetop}{RGB}{136, 182, 224}  % Used for vertical margin bar
+\definecolor{shadebottom}{RGB}{28, 69, 106} % [dto.]
+% \end{itemize}
+
+%% Text colors
+\setbeamercolor*{frametitle}{fg=smdsblue}
+\setbeamercolor*{footline}{fg=black!40}
+\setbeamercolor*{itemize item}{fg=smdsblue}
+\setbeamercolor*{itemize subitem}{fg=smdsblue}
+
+%% Title page colors
+\setbeamercolor*{title}{fg=black}
+\setbeamercolor*{subtitle}{fg=black}
+\setbeamercolor*{author}{fg=black}
+\setbeamercolor*{date}{fg=black}
+
+%% (Sub-)Section title page colors
+\setbeamercolor{section title}{fg=black}
+\setbeamercolor{subsection title}{fg=black}
+
+%% Blocks
+%\setbeamercolor*{block title}{bg=lightgrey!25}
+%\setbeamercolor*{block body}{bg=lightgrey!25}
+
+\endinput

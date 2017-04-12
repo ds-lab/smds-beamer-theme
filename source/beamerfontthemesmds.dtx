@@ -1,0 +1,32 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerfontthemesmds}[2017/04/10 v1.0 SMDS font theme]
+
+\RequirePackage[sfdefault,thin]{roboto}
+\RequirePackage[defaultmono]{droidmono}
+
+\RequirePackage{moresize}  % For \HUGE and co.
+
+% General definitions
+\setbeamerfont{structure}{series*=t,family=\roboto}
+
+% Outer theme fonts
+\setbeamerfont{footer}{series*=m,family=\roboto,size=\TINY}
+
+% Title page fonts
+\setbeamerfont{title}{series*=m,family=\robotocondensed,size=\HUGE}
+\setbeamerfont{subtitle}{series*=t,family=\roboto,size=\Large}
+
+\setbeamerfont{author}{size=\small}
+\setbeamerfont{institute}{size=\footnotesize}
+\setbeamerfont{date}{size=\small}
+
+% (Sub-)Section title page fonts
+\setbeamerfont{section title}{series*=m,family=\robotocondensed,size=\huge}
+\setbeamerfont{subsection title}{series*=t,family=\roboto,size=\large}
+
+% Content fonts
+\setbeamerfont{frametitle}{series*=m,family=\robotocondensed}
+\setbeamerfont{itemize/enumerate body}{parent=structure}
+\setbeamerfont{footnote}{size=\Tiny}
+
+\endinput

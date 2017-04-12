@@ -1,0 +1,98 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerouterthemesmds}[2017/04/10 v1.0 SMDS outer theme]
+
+\RequirePackage{tikz}
+\RequirePackage{etoolbox}
+
+% Default options
+\newcommand{\smds@outer@setdefaults}{
+  \pgfkeys{/smds/outer/.cd,
+    grid=off
+  }
+}
+
+% Image declarations
+\pgfdeclareimage[width=2cm,height=2cm]{unia}{images/unia.png}
+\pgfdeclareimage[width=1.8cm]{smds}{images/smds.png}
+
+% Frame background
+\pgfkeys{/smds/outer/grid/.cd,
+  .is choice,
+  off/.code={\def\smds@outer@disablegrid{}},
+  on/.code={\def\smds@outer@enablegrid{}}
+}
+\defbeamertemplate*{background canvas}{plain}{%
+  \begin{tikzpicture}
+    \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+
+    % Draw grid if enabled via option
+    \ifcsdef{smds@outer@enablegrid}{%
+      \draw[opacity=.2,help lines] (0,0) grid (\the\paperwidth,\the\paperheight);
+    }{}
+
+    % Shaded vertical left margin bar
+    \shade[top color=shadetop,bottom color=shadebottom] (0, 0) rectangle (0.3cm, \paperheight);
+
+    % SMDS logo
+    \node[anchor=south west] at (0.745cm, 0.07cm) {\pgfuseimage{smds}};
+
+    % UniA watermark
+    \node[opacity=.15] at({\paperwidth - 0.6cm}, {\paperheight - 0.4cm}) {\pgfuseimage{unia}};
+  \end{tikzpicture}
+}
+
+% Frame title
+\defbeamertemplate*{frametitle}{plain}{%
+  \nointerlineskip
+  \begin{beamercolorbox}[%
+    wd=\paperwidth,
+    ht=1.2cm,
+    sep=0pt,
+    leftskip=1.0cm]{frametitle}%
+    \usebeamerfont{frametitle}\insertframetitle%
+  \end{beamercolorbox}%
+}
+
+% Presentation title
+\defbeamertemplate{footer title}{none}{}
+\defbeamertemplate{footer title}{show}{\inserttitle}
+\defbeamertemplate{footer title}{short}{\insertshorttitle}
+\defbeamertemplate{footer title}{custom}[1]{ #1 }
+
+% Frame numbering options
+\defbeamertemplate{frame numbering}{none}{}
+\defbeamertemplate{frame numbering}{counter}{\insertframenumber}
+\defbeamertemplate{frame numbering}{fraction}{%
+  \insertframenumber/\inserttotalframenumber%
+}
+
+% Date options
+\defbeamertemplate{footer date}{none}{}
+\defbeamertemplate{footer date}{show}{\insertdate}
+\defbeamertemplate{footer date}{short}{\insertshortdate}
+
+% Footline with short date, section information, and page number
+\setbeamertemplate{navigation symbols}{}
+\newlength{\footlineskip}
+\setlength{\footlineskip}{2em}
+\defbeamertemplate*{footline}{plain}{%  
+  \begin{beamercolorbox}[%
+    wd=\paperwidth,
+    leftskip=0.68cm,
+    rightskip=0.8cm,
+    sep=0.2cm]{footline}%
+    \usebeamerfont{footer}%
+    \hfill%
+    \usebeamertemplate*{footer title}
+    \hspace{\the\footlineskip}
+    \usebeamertemplate*{footer date}%
+    \hspace{\the\footlineskip}%
+    \usebeamertemplate*{frame numbering}%
+  \end{beamercolorbox}%
+}
+
+% Option processing
+\smds@outer@setdefaults
+\ProcessPgfPackageOptions{/smds/outer}
+
+\endinput

@@ -1,0 +1,85 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerinnerthemesmds}[2017/04/10 v1.0 SMDS inner theme]
+
+\RequirePackage{pgfopts}
+
+% Default options
+\newcommand{\smds@inner@setdefaults}{
+  \pgfkeys{/smds/inner/.cd,
+    sectionpage=simple,
+    subsectionpage=simple
+  }
+}
+
+% Enumerations and lists
+\setbeamertemplate{itemize subitem}{\guillemotright}
+\setbeamertemplate{itemize subsubitem}{\guilsinglright}
+
+% Section pages
+\pgfkeys{
+  /smds/inner/sectionpage/.cd,
+  .is choice,
+  none/.code=\smds@disablesectionpage,
+  simple/.code={\smds@enablesectionpage
+    \setbeamertemplate{section page}[simple]}
+}
+
+\pgfkeys{
+  /smds/inner/subsectionpage/.cd,
+  .is choice,
+  none/.code=\smds@disablesubsectionpage,
+  simple/.code={\smds@enablesubsectionpage
+    \setbeamertemplate{subsection page}[simple]}
+}
+
+\defbeamertemplate{section page}{simple}{
+  \begin{center}
+    \usebeamercolor[fg]{section title}
+    \usebeamerfont{section title}
+    \insertsectionhead\par
+    \ifx\insertsubsectionhead\@empty\else
+      \usebeamercolor[fg]{subsection title}
+      \usebeamerfont{subsection title}
+      \medskip
+      \insertsubsectionhead
+    \fi
+  \end{center}
+}
+
+\newcommand{\smds@disablesectionpage}{
+  \AtBeginSection{
+    % intentionally empty
+  }
+}
+\newcommand{\smds@enablesectionpage}{
+  \AtBeginSection{
+    \ifbeamer@inframe
+      \sectionpage
+    \else
+      \frame[plain,c,noframenumbering]{\sectionpage}
+    \fi
+  }
+}
+\setbeamertemplate{subsection page}{%
+  \usebeamertemplate*{section page}
+}
+\newcommand{\smds@disablesubsectionpage}{
+  \AtBeginSubsection{
+    % intentionally empty
+  }
+}
+\newcommand{\smds@enablesubsectionpage}{
+  \AtBeginSubsection{
+    \ifbeamer@inframe
+    \subsectionpage
+    \else
+      \frame[plain,c,noframenumbering]{\subsectionpage}
+    \fi
+  }
+}
+
+% Option processing
+\smds@inner@setdefaults
+\ProcessPgfPackageOptions{/smds/inner}
+
+\endinput
