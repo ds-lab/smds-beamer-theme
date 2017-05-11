@@ -1,8 +1,37 @@
+% \iffalse meta-comment -----------------------------------------------------
+% Copyright 2017 Adrian Rumpold and the LaTeX community. A full list of
+% contributors can be found at
+%
+%     https://github.com/ds-lab/smds-beamer-theme/Contributors
+%
+% and the original template was based on the Metropolis theme by
+% Andreas Vogelsang.
+%
+% This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
+% International License (https://creativecommons.org/licenses/by-sa/4.0/).
+% --------------------------------------------------------------------------- \fi
+% \iffalse
+%<*package>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerthemesmds}[2017/04/10 v1.0 SMDS Beamer theme]
-
+\ProvidesPackage{beamerthemesmds}[2017/05/11 v1.0 SMDS Beamer Theme]
+%</package>
+% \fi
+% \CheckSum{0}
+% \StopEventually{}
+% \iffalse
+%<*package>
+% ------------------------------------------------------------------------- \fi
+% \subsection{\themename parent theme package}
+%
+% This package loads the other components of the \themename theme.
+%
+% \subsubsection{Package dependencies}
+%    \begin{macrocode}
 \RequirePackage{pgfopts}
-
+%    \end{macrocode}
+%
+% \subsubsection{Options}
+%    \begin{macrocode}
 \pgfkeys{/smds/.cd,
   .search also={
     /smds/inner,
@@ -11,12 +40,31 @@
     /smds/font,
   }
 }
-
+%    \end{macrocode}
+%
+% Set default values for options.
+%    \begin{macrocode}
+\newcommand{\smds@setdefaults}{%
+  % Empty
+}
+%    \end{macrocode}
+% 
+% \subsubsection{Theme components}
+%    \begin{macrocode}
 \useinnertheme{smds}
 \useoutertheme{smds}
 \usecolortheme{smds}
 \usefonttheme{smds}
-
+%    \end{macrocode}
+% 
+% \subsubsection{Process package options}
+%    \begin{macrocode}
+\smds@setdefaults
 \ProcessPgfOptions{/smds}
-
+%    \end{macrocode}
+%
+% \iffalse
+%</package>
+% \fi
+% \Finale
 \endinput

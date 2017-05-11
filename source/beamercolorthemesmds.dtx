@@ -1,35 +1,98 @@
+% \iffalse meta-comment -----------------------------------------------------
+% Copyright 2017 Adrian Rumpold and the LaTeX community. A full list of
+% contributors can be found at
+%
+%     https://github.com/ds-lab/smds-beamer-theme/Contributors
+%
+% and the original template was based on the Metropolis theme by
+% Andreas Vogelsang.
+%
+% This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
+% International License (https://creativecommons.org/licenses/by-sa/4.0/).
+% --------------------------------------------------------------------------- \fi
+% \iffalse
+%<*package>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamercolorthemesmds}[2017/04/10 v1.0 SMDS color theme]
-
+\ProvidesPackage{beamercolorthemesmds}[2017/05/11 v1.0 SMDS color theme]
+%</package>
+% \fi
+% \CheckSum{0}
+% \StopEventually{}
+% \iffalse
+%<*package>
+% ------------------------------------------------------------------------- \fi
+% \subsection{\themename color theme package}
+% This package defines color options for the \themename Beamer theme.
+%
+% \subsubsection{Package dependencies}
+%    \begin{macrocode}
 \RequirePackage{xcolor}
-
-%% Color names
-% \begin{itemize}
-% \item SMDS Corporate Design blue
-\definecolor{smdsblue}{RGB}{0, 69, 134}     % General
-% \item Colors for shaded vertical margin bar
-\definecolor{shadetop}{RGB}{136, 182, 224}  % Used for vertical margin bar
-\definecolor{shadebottom}{RGB}{28, 69, 106} % [dto.]
-% \end{itemize}
-
-%% Text colors
+\RequirePackage{pgfopts}
+%    \end{macrocode}
+%
+% \subsubsection{Options}
+% Set default values for options.
+%    \begin{macrocode}
+\newcommand{\smds@color@setdefaults}{%
+  % Empty
+}
+%    \end{macrocode}
+% 
+% \subsubsection{Color names}
+% \begin{macro}{smdsblue}
+%   The SMDS corporate design main accent color
+%    \begin{macrocode}
+\definecolor{smdsblue}{RGB}{0, 69, 134}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{shadetop}
+%   Gradient color for top of vertical margin bar
+%    \begin{macrocode}
+\definecolor{shadetop}{RGB}{136, 182, 224}
+%    \end{macrocode}
+% \end{macro}
+% \begin{macro}{shadebottom}
+%   Gradient color for bottom of vertical margin bar
+%    \begin{macrocode}
+\definecolor{shadebottom}{RGB}{28, 69, 106}
+%    \end{macrocode}
+% \end{macro}
+% 
+% \subsubsection{Text colors}
+%    \begin{macrocode}
 \setbeamercolor*{frametitle}{fg=smdsblue}
 \setbeamercolor*{footline}{fg=black!40}
 \setbeamercolor*{itemize item}{fg=smdsblue}
 \setbeamercolor*{itemize subitem}{fg=smdsblue}
-
-%% Title page colors
+%    \end{macrocode}
+%
+% \subsubsection{Title page colors}
+%    \begin{macrocode}
 \setbeamercolor*{title}{fg=black}
 \setbeamercolor*{subtitle}{fg=black}
 \setbeamercolor*{author}{fg=black}
 \setbeamercolor*{date}{fg=black}
-
-%% (Sub-)Section title page colors
+%    \end{macrocode}
+% 
+% \subsubsection{(Sub-)Section title page colors}
+%    \begin{macrocode}
 \setbeamercolor{section title}{fg=black}
 \setbeamercolor{subsection title}{fg=black}
-
-%% Blocks
-%\setbeamercolor*{block title}{bg=lightgrey!25}
-%\setbeamercolor*{block body}{bg=lightgrey!25}
-
+%    \end{macrocode}
+% 
+% \subsubsection{Blocks}
+%    \begin{macrocode}
+\setbeamercolor*{block title}{bg=lightgrey!25}
+\setbeamercolor*{block body}{bg=lightgrey!25}
+%    \end{macrocode}
+% \subsubsection{Option processing}
+%    \begin{macrocode}
+\smds@color@setdefaults
+\ProcessPgfPackageOptions{/smds/color}
+%    \end{macrocode}
+%
+% \iffalse
+%</package>
+% \fi
+% \Finale
 \endinput

@@ -1,32 +1,85 @@
+% \iffalse meta-comment -----------------------------------------------------
+% Copyright 2017 Adrian Rumpold and the LaTeX community. A full list of
+% contributors can be found at
+%
+%     https://github.com/ds-lab/smds-beamer-theme/Contributors
+%
+% and the original template was based on the Metropolis theme by
+% Andreas Vogelsang.
+%
+% This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
+% International License (https://creativecommons.org/licenses/by-sa/4.0/).
+% --------------------------------------------------------------------------- \fi
+% \iffalse
+%<*package>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerfontthemesmds}[2017/04/10 v1.0 SMDS font theme]
-
+\ProvidesPackage{beamerfontthemesmds}[2017/05/11 v1.0 SMDS font theme]
+%</package>
+% \fi
+% \CheckSum{0}
+% \StopEventually{}
+% \iffalse
+%<*package>
+% ------------------------------------------------------------------------- \fi
+% \subsection{\themename font theme package}
+% This package defines font options for the \themename Beamer theme.
+%
+% \subsubsection{Package dependencies}
+%    \begin{macrocode}
 \RequirePackage[sfdefault,thin]{roboto}
 \RequirePackage[defaultmono]{droidmono}
 
+\RequirePackage{pgfopts}
 \RequirePackage{moresize}  % For \HUGE and co.
-
-% General definitions
+%    \end{macrocode}
+%
+% \subsubsection{Options}
+% Set default values for options.
+%    \begin{macrocode}
+\newcommand{\smds@font@setdefaults}{%
+  % Empty
+}
+%    \end{macrocode}
+% 
+% \subsubsection{General definitions}
+%    \begin{macrocode}
 \setbeamerfont{structure}{series*=t,family=\roboto}
-
-% Outer theme fonts
+%    \end{macrocode}
+% \subsubsection{Outer theme fonts}
+%    \begin{macrocode}
 \setbeamerfont{footer}{series*=m,family=\roboto,size=\TINY}
-
-% Title page fonts
+%    \end{macrocode}
+%
+% \subsubsection{Title page fonts}
+%    \begin{macrocode}
 \setbeamerfont{title}{series*=m,family=\robotocondensed,size=\HUGE}
 \setbeamerfont{subtitle}{series*=t,family=\roboto,size=\Large}
 
 \setbeamerfont{author}{size=\small}
 \setbeamerfont{institute}{size=\footnotesize}
 \setbeamerfont{date}{size=\small}
-
-% (Sub-)Section title page fonts
+%    \end{macrocode}
+%
+% \subsubsection{(Sub-)Section title page fonts}
+%    \begin{macrocode}
 \setbeamerfont{section title}{series*=m,family=\robotocondensed,size=\huge}
 \setbeamerfont{subsection title}{series*=t,family=\roboto,size=\large}
-
-% Content fonts
+%    \end{macrocode}
+% 
+% \subsubsection{Content fonts}
+%    \begin{macrocode}
 \setbeamerfont{frametitle}{series*=m,family=\robotocondensed}
 \setbeamerfont{itemize/enumerate body}{parent=structure}
 \setbeamerfont{footnote}{size=\Tiny}
-
+%    \end{macrocode}
+%
+% \subsubsection{Option processing}
+%    \begin{macrocode}
+\smds@font@setdefaults
+\ProcessPgfPackageOptions{/smds/font}
+%    \end{macrocode}
+% \iffalse
+%</package>
+% \fi
+% \Finale
 \endinput

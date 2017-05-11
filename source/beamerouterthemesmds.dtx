@@ -1,26 +1,61 @@
+% \iffalse meta-comment -----------------------------------------------------
+% Copyright 2017 Adrian Rumpold and the LaTeX community. A full list of
+% contributors can be found at
+%
+%     https://github.com/ds-lab/smds-beamer-theme/Contributors
+%
+% and the original template was based on the Metropolis theme by
+% Andreas Vogelsang.
+%
+% This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
+% International License (https://creativecommons.org/licenses/by-sa/4.0/).
+% --------------------------------------------------------------------------- \fi
+% \iffalse
+%<*package>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerouterthemesmds}[2017/04/10 v1.0 SMDS outer theme]
-
+\ProvidesPackage{beamerouterthemesmds}[2017/05/11 v1.0 SMDS outer theme]
+%</package>
+% \fi
+% \CheckSum{0}
+% \StopEventually{}
+% \iffalse
+%<*package>
+% ------------------------------------------------------------------------- \fi
+% \subsection{\themename color theme package}
+% This package defines color options for the \themename Beamer theme.
+%
+% \subsubsection{Package dependencies}
+%    \begin{macrocode}
 \RequirePackage{tikz}
 \RequirePackage{etoolbox}
-
-% Default options
-\newcommand{\smds@outer@setdefaults}{
-  \pgfkeys{/smds/outer/.cd,
-    grid=off
-  }
-}
-
-% Image declarations
-\pgfdeclareimage[width=2cm,height=2cm]{unia}{images/unia.png}
-\pgfdeclareimage[width=1.8cm]{smds}{images/smds.png}
-
-% Frame background
+%    \end{macrocode}
+%
+% \subsubsection{Options}
+%    \begin{macrocode}
 \pgfkeys{/smds/outer/grid/.cd,
   .is choice,
   off/.code={\def\smds@outer@disablegrid{}},
   on/.code={\def\smds@outer@enablegrid{}}
 }
+%    \end{macrocode}
+% 
+% Set default values for options.
+%    \begin{macrocode}
+\newcommand{\smds@outer@setdefaults}{
+  \pgfkeys{/smds/outer/.cd,
+    grid=off
+  }
+}
+%    \end{macrocode}
+% 
+% \subsubsection{Image declarations}
+%    \begin{macrocode}
+\pgfdeclareimage[width=2cm,height=2cm]{unia}{images/unia.png}
+\pgfdeclareimage[width=1.8cm]{smds}{images/smds.png}
+%    \end{macrocode}
+% 
+% \subsubsection{Frame background}
+%    \begin{macrocode}
 \defbeamertemplate*{background canvas}{plain}{%
   \begin{tikzpicture}
     \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
@@ -40,8 +75,10 @@
     \node[opacity=.15] at({\paperwidth - 0.6cm}, {\paperheight - 0.4cm}) {\pgfuseimage{unia}};
   \end{tikzpicture}
 }
-
-% Frame title
+%    \end{macrocode}
+% 
+% \subsubsection{Frame title}
+%    \begin{macrocode}
 \defbeamertemplate*{frametitle}{plain}{%
   \nointerlineskip
   \begin{beamercolorbox}[%
@@ -52,26 +89,35 @@
     \usebeamerfont{frametitle}\insertframetitle%
   \end{beamercolorbox}%
 }
-
-% Presentation title
+%    \end{macrocode}
+%
+% \subsubsection{Presentation title}
+%    \begin{macrocode}
 \defbeamertemplate{footer title}{none}{}
 \defbeamertemplate{footer title}{show}{\inserttitle}
 \defbeamertemplate{footer title}{short}{\insertshorttitle}
 \defbeamertemplate{footer title}{custom}[1]{ #1 }
-
-% Frame numbering options
+%    \end{macrocode}
+%
+% \subsubsection{Frame numbering options}
+%    \begin{macrocode}
 \defbeamertemplate{frame numbering}{none}{}
 \defbeamertemplate{frame numbering}{counter}{\insertframenumber}
 \defbeamertemplate{frame numbering}{fraction}{%
   \insertframenumber/\inserttotalframenumber%
 }
-
-% Date options
+%    \end{macrocode}
+% 
+% \subsubsection{Date options}
+%    \begin{macrocode}
 \defbeamertemplate{footer date}{none}{}
 \defbeamertemplate{footer date}{show}{\insertdate}
 \defbeamertemplate{footer date}{short}{\insertshortdate}
-
-% Footline with short date, section information, and page number
+%    \end{macrocode}
+% 
+% \subsubsection{Footline}
+% Contains short date, section information, and page number.
+%    \begin{macrocode}
 \setbeamertemplate{navigation symbols}{}
 \newlength{\footlineskip}
 \setlength{\footlineskip}{2em}
@@ -90,9 +136,16 @@
     \usebeamertemplate*{frame numbering}%
   \end{beamercolorbox}%
 }
-
-% Option processing
+%    \end{macrocode}
+% 
+% \subsubsection{Option processing}
+%    \begin{macrocode}
 \smds@outer@setdefaults
 \ProcessPgfPackageOptions{/smds/outer}
-
+%    \end{macrocode}
+% 
+% \iffalse
+%</package>
+% \fi
+% \Finale
 \endinput

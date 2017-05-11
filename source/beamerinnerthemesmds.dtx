@@ -1,21 +1,36 @@
+% \iffalse meta-comment -----------------------------------------------------
+% Copyright 2017 Adrian Rumpold and the LaTeX community. A full list of
+% contributors can be found at
+%
+%     https://github.com/ds-lab/smds-beamer-theme/Contributors
+%
+% and the original template was based on the Metropolis theme by
+% Andreas Vogelsang.
+%
+% This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
+% International License (https://creativecommons.org/licenses/by-sa/4.0/).
+% --------------------------------------------------------------------------- \fi
+% \iffalse
+%<*package>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerinnerthemesmds}[2017/04/10 v1.0 SMDS inner theme]
-
+\ProvidesPackage{beamerinnerthemesmds}[2017/05/11 v1.0 SMDS inner theme]
+%</package>
+% \fi
+% \CheckSum{0}
+% \StopEventually{}
+% \iffalse
+%<*package>
+% ------------------------------------------------------------------------- \fi
+% \subsection{\themename inner theme package}
+% \subsubsection{Package dependencies}
+%    \begin{macrocode}
 \RequirePackage{pgfopts}
-
-% Default options
-\newcommand{\smds@inner@setdefaults}{
-  \pgfkeys{/smds/inner/.cd,
-    sectionpage=simple,
-    subsectionpage=simple
-  }
-}
-
-% Enumerations and lists
-\setbeamertemplate{itemize subitem}{\guillemotright}
-\setbeamertemplate{itemize subsubitem}{\guilsinglright}
-
-% Section pages
+%    \end{macrocode}
+%
+% \subsubsection{Package options}
+% \begin{macro}{sectionpage}
+%   Optionally enable or disable section title pages.
+%    \begin{macrocode}
 \pgfkeys{
   /smds/inner/sectionpage/.cd,
   .is choice,
@@ -23,7 +38,12 @@
   simple/.code={\smds@enablesectionpage
     \setbeamertemplate{section page}[simple]}
 }
-
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{subsectionpage}
+%   Optionally enable or disable subsection title pages.
+%    \begin{macrocode}
 \pgfkeys{
   /smds/inner/subsectionpage/.cd,
   .is choice,
@@ -31,7 +51,27 @@
   simple/.code={\smds@enablesubsectionpage
     \setbeamertemplate{subsection page}[simple]}
 }
-
+%    \end{macrocode}
+% \end{macro}
+%
+% Set default values for options.
+%    \begin{macrocode}
+\newcommand{\smds@inner@setdefaults}{%
+  \pgfkeys{/smds/inner/.cd,
+    sectionpage=simple,
+    subsectionpage=simple
+  }
+}
+%    \end{macrocode}
+% 
+% \subsubsection{Enumerations and lists}
+%    \begin{macrocode}
+\setbeamertemplate{itemize subitem}{\guillemotright}
+\setbeamertemplate{itemize subsubitem}{\guilsinglright}
+%    \end{macrocode}
+% 
+% \subsubsection{Section pages}
+%    \begin{macrocode}
 \defbeamertemplate{section page}{simple}{
   \begin{center}
     \usebeamercolor[fg]{section title}
@@ -60,14 +100,17 @@
     \fi
   }
 }
+
 \setbeamertemplate{subsection page}{%
   \usebeamertemplate*{section page}
 }
+
 \newcommand{\smds@disablesubsectionpage}{
   \AtBeginSubsection{
     % intentionally empty
   }
 }
+
 \newcommand{\smds@enablesubsectionpage}{
   \AtBeginSubsection{
     \ifbeamer@inframe
@@ -77,9 +120,16 @@
     \fi
   }
 }
-
-% Option processing
+%    \end{macrocode}
+% 
+% \subsubsection{Option processing}
+%    \begin{macrocode}
 \smds@inner@setdefaults
 \ProcessPgfPackageOptions{/smds/inner}
-
+%    \end{macrocode}
+%
+% \iffalse
+%</package>
+% \fi
+% \Finale
 \endinput
