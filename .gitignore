@@ -1,6 +1,9 @@
 ## Intermediate build directory
 .latex-cache
 
+## CTAN build results
+*.tar.gz
+
 ## Theme files should be generated from ins/dtx
 *.sty
 
