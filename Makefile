@@ -8,7 +8,7 @@ DOC_SRC     = doc/smdstheme.dtx
 DOC_PDF     = doc/smdstheme.pdf
 IMAGES_DIR	= images/
 
-CTAN_CONTENT = README.md $(INS) $(PACKAGE_SRC) $(DOC_SRC) $(DOC_PDF) $(DEMO_SRC) $(DEMO_PDF)
+CTAN_CONTENT = README.md $(INS) $(PACKAGE_SRC) $(DOC_SRC) $(DOC_PDF) $(DEMO_SRC) $(DEMO_PDF) $(IMAGES_DIR)
 
 DESTDIR     ?= 'c:/localtexmf'
 INSTALL_DIR  = $(DESTDIR)/tex/latex/smds
