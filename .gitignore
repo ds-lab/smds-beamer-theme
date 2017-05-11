@@ -1,3 +1,6 @@
+## Intermediate build directory
+.latex-cache
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
@@ -17,7 +20,7 @@
 # these rules might exclude image files for figures etc.
 # *.ps
 # *.eps
-# *.pdf
+*.pdf
 
 ## Generated if empty string is given at "Please type another file name for output:"
 .pdf
@@ -214,7 +217,7 @@ TSWLatexianTemp*
 *~[0-9]*
 
 # auto folder when using emacs and auctex
-/auto/*
+**/auto/*
 
 # expex forward references with \gathertags
 *-tags.tex
