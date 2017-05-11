@@ -1,0 +1,142 @@
+%% ----------------------------------------------------------------------------
+%% Copyright 2017 Adrian Rumpold and the LaTeX community. A full list of
+%% contributors can be found at
+%%
+%%     https://github.com/ds-lab/smds-beamer-theme/Contributors
+%%
+%% and the original template was based on the Metropolis theme by
+%% Andreas Vogelsang.
+%%
+%% This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
+%% International License (https://creativecommons.org/licenses/by-sa/4.0/).
+%% ----------------------------------------------------------------------------
+
+\documentclass{ltxdoc}
+%\OnlyDescription
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{parskip}
+\usepackage{setspace}
+\usepackage{xspace}
+\onehalfspacing
+
+\usepackage[sfdefault,condensed]{roboto}
+%\usepackage[sfdefault]{FiraSans}
+\usepackage{FiraMono}
+
+\newcommand{\themename}{\textbf{\textsc{SMDS}}\xspace}
+
+\usepackage{readprov}
+\ReadPackageInfos{beamerthemesmds}
+
+\usepackage{xcolor}
+\definecolor{mDarkBrown}{HTML}{604c38}
+\definecolor{mDarkTeal}{HTML}{23373b}
+\definecolor{mLightBrown}{HTML}{EB811B}
+\definecolor{mLightGreen}{HTML}{14B03D}
+\definecolor{smdsblue}{RGB}{0, 69, 134}
+
+\usepackage[%
+colorlinks=true,
+linkcolor=smdsblue,
+menucolor=smdsblue,
+pagecolor=smdsblue,
+urlcolor=smdsblue]{hyperref}
+
+\usepackage{listings}
+\lstset{%
+  language=[LaTeX]{TeX},
+  basicstyle={\ttfamily\footnotesize},
+  keywordstyle=\color{mLightBrown}\bfseries,
+  commentstyle=\color{mLightGreen},
+  stringstyle=\color{mLightGreen},
+  backgroundcolor=\color{lightgray!5},
+  numbers=none,
+  numberstyle=\tiny\ttfamily,
+  stepnumber=2,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  frame=single,
+  framerule=1pt,
+  rulecolor=\color{black!30},
+  frameround=ftft,
+  tabsize=2,
+  rulesep=5em,
+  captionpos=b,
+  breaklines=true,
+  breakatwhitespace=false,
+  framexleftmargin=1em,
+  framexrightmargin=1em,
+  xleftmargin=.1\textwidth,
+  xrightmargin=.1\textwidth,
+  aboveskip=1em,
+  belowskip=1em,
+  morekeywords={usetheme,institute,maketitle,%
+    plain,setbeamercolor,setsansfont,setmonofont}
+}
+\lstMakeShortInline|
+
+\title{Beamer presentations with the \themename package}
+\author{Adrian Rumpold \\ \url{a.rumpold@gmail.com}}
+\date{\fileversion~---~\filedate}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Introduction}
+
+\section{Getting Started}
+\subsection{Installing from CTAN}
+
+\subsection{Installing from Github}
+
+\subsection{Minimal Example}
+The following code snippet illustrates the use of the \themename
+theme in a very simple Beamer presentation.
+
+\begin{lstlisting}
+\documentclass{beamer}
+\usetheme{smds}       % Use SMDS theme
+\title{Hello World}
+\date{\today}
+\author{Adrian Rumpold}
+\institute{University of Augsburg}
+\begin{document}
+  \maketitle
+  \section{Introduction}
+  \begin{frame}{Agenda}
+    \begin{itemize}
+    \item Eat ice cream.
+    \item Drink coffee.
+    \end{itemize}
+  \end{frame}
+\end{document}
+\end{lstlisting}
+
+\subsection{Dependencies}
+
+\themename depends on the |beamer| class and the following standard packages:
+\begin{multicols}{3}
+  \begin{itemize}
+    \item |tikz|
+    \item |pgfopts|
+    \item |etoolbox|
+  \end{itemize}
+\end{multicols}
+
+Additionally, the \themename
+
+\section{Customizing}
+\subsection{Section title pages}
+TODO: Describe |/smds/inner/sectionpage| and |/smds/inner/subsectionpage|.
+
+\section{Implementation}
+\DocInput{../source/beamerthemesmds.dtx}
+\DocInput{../source/beamerinnerthemesmds.dtx}
+\DocInput{../source/beamerouterthemesmds.dtx}
+\DocInput{../source/beamerfontthemesmds.dtx}
+\DocInput{../source/beamercolorthemesmds.dtx}
+\end{document}
