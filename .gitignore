@@ -1,6 +1,9 @@
 ## Intermediate build directory
 .latex-cache
 
+## Theme files should be generated from ins/dtx
+*.sty
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
