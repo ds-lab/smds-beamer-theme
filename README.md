@@ -5,14 +5,14 @@
 Installing the SMDS theme from source, like any Beamer theme, involves four easy
 steps:
 
-1. **Download the source** with a `git clone` of the [Metropolis repository](https://github.com/ds-lab/smds-beamer-theme)
+1. **Download the source** with a `git clone` of the [SMDS theme repository](https://github.com/ds-lab/smds-beamer-theme)
 or as a [zip archive](https://github.com/ds-lab/smds-beamer-theme/archive/master.zip) of the latest development version.
 
 2. **Compile the style files** by running `make sty` inside the downloaded
     directory. (Or run LaTeX directly on `source/smdstheme.ins`.)
 
 3. **Move the resulting `*.sty` files** to the folder containing your
-   presentation. To use Metropolis with many presentations, run `make install`
+   presentation. To use the theme with many presentations, run `make install`
    or move the `*.sty` files to a folder in your TeX path instead (might require
    `sudo` rights).
 
