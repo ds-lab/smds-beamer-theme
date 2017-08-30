@@ -13,10 +13,10 @@
 % \iffalse
 %<*package>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerinnerthemesmds}[2017/05/11 v1.0 SMDS inner theme]
+\ProvidesPackage{beamerinnerthemesmds}[2017/08/30 v1.1 SMDS inner theme]
 %</package>
 % \fi
-% \CheckSum{60}
+% \CheckSum{73}
 % \StopEventually{}
 % \iffalse
 %<*package>
@@ -30,26 +30,46 @@
 % \subsubsection{Package options}
 % \begin{macro}{sectionpage}
 %   Optionally enable or disable section title pages.
+%
+%   \begin{description}
+%   \item[simple] Displays a single slide with the current section title
+%     after a section break
+%   \item[agenda] Displays an table-of-contents slide with the current
+%     section highlighted after a section break
+%   \end{description}
+%
 %    \begin{macrocode}
 \pgfkeys{
   /smds/inner/sectionpage/.cd,
   .is choice,
   none/.code=\smds@disablesectionpage,
   simple/.code={\smds@enablesectionpage
-    \setbeamertemplate{section page}[simple]}
+    \setbeamertemplate{section page}[simple]},
+  agenda/.code={\smds@enablesectionpage
+    \setbeamertemplate{section page}[agenda]}
 }
 %    \end{macrocode}
 % \end{macro}
 %
 % \begin{macro}{subsectionpage}
 %   Optionally enable or disable subsection title pages.
+%
+%   \begin{description}
+%   \item[simple] Displays a single slide with the current section and
+%     subsection title after a subsection break
+%   \item[agenda] Displays an table-of-contents slide with the current
+%     subsection highlighted after a subsection break
+%   \end{description}
+%   
 %    \begin{macrocode}
 \pgfkeys{
   /smds/inner/subsectionpage/.cd,
   .is choice,
   none/.code=\smds@disablesubsectionpage,
   simple/.code={\smds@enablesubsectionpage
-    \setbeamertemplate{subsection page}[simple]}
+    \setbeamertemplate{subsection page}[simple]},
+  agenda/.code={\smds@enablesubsectionpage
+    \setbeamertemplate{subsection page}[agenda]}
 }
 %    \end{macrocode}
 % \end{macro}
@@ -72,7 +92,7 @@
 % 
 % \subsubsection{Section pages}
 %    \begin{macrocode}
-\defbeamertemplate{section page}{simple}{
+\newcommand{\smds@sectionpage@simple}{%
   \begin{center}
     \usebeamercolor[fg]{section title}
     \usebeamerfont{section title}
@@ -86,6 +106,15 @@
   \end{center}
 }
 
+\defbeamertemplate{section page}{simple}{%
+  \smds@sectionpage@simple
+}
+
+\defbeamertemplate{section page}{agenda}{%
+  \frametitle{Agenda}
+  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/shaded/hide]
+}
+
 \newcommand{\smds@disablesectionpage}{
   \AtBeginSection{
     % intentionally empty
@@ -94,15 +123,23 @@
 \newcommand{\smds@enablesectionpage}{
   \AtBeginSection{
     \ifbeamer@inframe
-      \sectionpage
+      \sectionpagex
     \else
       \frame[plain,c,noframenumbering]{\sectionpage}
     \fi
   }
 }
+%    \end{macrocode}
+%
+% \subsubsection{Subsection pages}
+%    \begin{macrocode}
+\defbeamertemplate{subsection page}{simple}{%
+  \smds@sectionpage@simple
+}
 
-\setbeamertemplate{subsection page}{%
-  \usebeamertemplate*{section page}
+\defbeamertemplate{subsection page}{agenda}{%
+  \frametitle{Agenda}
+  \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/shaded/hide]
 }
 
 \newcommand{\smds@disablesubsectionpage}{
@@ -114,7 +151,7 @@
 \newcommand{\smds@enablesubsectionpage}{
   \AtBeginSubsection{
     \ifbeamer@inframe
-    \subsectionpage
+      \subsectionpage
     \else
       \frame[plain,c,noframenumbering]{\subsectionpage}
     \fi

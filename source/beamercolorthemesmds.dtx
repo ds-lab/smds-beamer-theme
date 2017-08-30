@@ -13,10 +13,10 @@
 % \iffalse
 %<*package>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamercolorthemesmds}[2017/05/11 v1.0 SMDS color theme]
+\ProvidesPackage{beamercolorthemesmds}[2017/08/30 v1.1 SMDS color theme]
 %</package>
 % \fi
-% \CheckSum{21}
+% \CheckSum{23}
 % \StopEventually{}
 % \iffalse
 %<*package>
@@ -85,6 +85,13 @@
 \setbeamercolor*{block title}{bg=lightgray!25}
 \setbeamercolor*{block body}{bg=lightgray!25}
 %    \end{macrocode}
+%
+% \subsubsection{Table of Contents}
+%    \begin{macrocode}
+\setbeamercolor{section in toc}{fg=smdsblue}
+\setbeamercolor{subsection in toc}{fg=black}
+%    \end{macrocode}
+%
 % \subsubsection{Option processing}
 %    \begin{macrocode}
 \smds@color@setdefaults
