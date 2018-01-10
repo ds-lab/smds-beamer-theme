@@ -9,7 +9,7 @@ steps:
 or as a [zip archive](https://github.com/ds-lab/smds-beamer-theme/archive/master.zip) of the latest development version.
 
 2. **Compile the style files** by running `make sty` inside the downloaded
-    directory. (Or run LaTeX directly on `source/smdstheme.ins`.)
+    directory. (Or run LaTeX directly on `source/beamerthemesmds.ins`.)
 
 3. **Move the resulting `*.sty` files** to the folder containing your
    presentation. To use the theme with many presentations, run `make install`
