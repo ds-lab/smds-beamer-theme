@@ -1,4 +1,4 @@
-FROM ubuntu:yakkety
+FROM ubuntu:artful
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update -q
