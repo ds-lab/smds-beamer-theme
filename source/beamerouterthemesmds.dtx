@@ -13,10 +13,10 @@
 % \iffalse
 %<*package>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerouterthemesmds}[2017/05/11 v1.0 SMDS outer theme]
+\ProvidesPackage{beamerouterthemesmds}[2018/01/09 v1.1 SMDS outer theme]
 %</package>
 % \fi
-% \CheckSum{80}
+% \CheckSum{92}
 % \StopEventually{}
 % \iffalse
 %<*package>
@@ -81,17 +81,21 @@
 %    \begin{macrocode}
 \defbeamertemplate*{frametitle}{plain}{%
   \nointerlineskip
-  \begin{beamercolorbox}[%
-    wd=\paperwidth,
-    ht=1.2cm,
-    sep=0pt,
-    leftskip=1.0cm]{frametitle}%
-    \usebeamerfont{frametitle}\insertframetitle%
+  \begin{beamercolorbox}[left]{frametitle}%
+    \begin{minipage}[t][1.5cm][b]{\dimexpr\paperwidth-3cm}
+      \raggedright
+      \usebeamerfont{frametitle}\insertframetitle%
+      \ifx\insertframesubtitle\@empty\else
+        \vskip0.1em%
+        \usebeamerfont{framesubtitle}%
+        \insertframesubtitle%
+      \fi
+    \end{minipage}
   \end{beamercolorbox}%
 }
 %    \end{macrocode}
 %
-% \subsubsection{Presentation title}
+% \subsubsection{Presentation title in footer}
 %    \begin{macrocode}
 \defbeamertemplate{footer title}{none}{}
 \defbeamertemplate{footer title}{show}{\inserttitle}
