@@ -1,8 +1,8 @@
 %% ----------------------------------------------------------------------------
-%% Copyright 2017 Adrian Rumpold and the LaTeX community. A full list of
+%% Copyright 2017, 2018 Adrian Rumpold and the LaTeX community. A full list of
 %% contributors can be found at
 %%
-%%     https://github.com/ds-lab/smds-beamer-theme/Contributors
+%%     https://github.com/ds-lab/smds-beamer-theme/CONTRIBUTORS
 %%
 %% and the original template was based on the Metropolis theme by
 %% Andreas Vogelsang.
@@ -77,8 +77,8 @@ urlcolor=smdsblue]{hyperref}
 }
 \lstMakeShortInline|
 
-\def\fileversion{v1.3}
-\def\filedate{2017/08/30}
+\def\fileversion{v1.4}
+\def\filedate{2017/01/10}
 
 \title{Beamer presentations with the \themename package}
 \author{Adrian Rumpold \\ \url{a.rumpold@gmail.com}}
@@ -94,6 +94,8 @@ urlcolor=smdsblue]{hyperref}
 \subsection{Installing from CTAN}
 
 \subsection{Installing from Github}
+The Readme file in the \href{https://github.com/ds-lab/smds-beamer-theme}{Github repository}
+contains installation instructions and a quickstart guide.
 
 \subsection{Minimal Example}
 The following code snippet illustrates the use of the \themename
@@ -129,11 +131,55 @@ theme in a very simple Beamer presentation.
   \end{itemize}
 \end{multicols}
 
-Additionally, the \themename
+Additionally, the default font theme uses the Roboto and Droid Sans Mono fonts
+provided by the following packages, available on CTAN:
+\begin{multicols}{3}
+  \begin{itemize}
+    \item |roboto|
+    \item |droidmono|
+  \end{itemize}
+\end{multicols}
 
 \section{Customizing}
 \subsection{Section title pages}
-TODO: Describe |/smds/inner/sectionpage| and |/smds/inner/subsectionpage|.
+
+The \themename theme provides multiple options for section and subsecution title pages.
+
+These options can be customized when loading the theme:
+\begin{lstlisting}
+\usetheme[
+  sectionpage=<...>,
+  subsectionpage=<...>
+]{smds}
+\end{lstlisting}
+
+\subsubsection{Options for \texttt{sectionpage}}
+\begin{description}
+\item[none] (default) Do not insert a title page before a new |\section|
+\item[simple] Add a title page with the section title before a new |\section|
+\item[agenda] Add an agenda overview page with the next section highlighted before a new |\section|
+\end{description}
+
+\subsubsection{Options for \texttt{subsectionpage}}
+\begin{description}
+\item[none] (default) Do not insert a title page before a new |\subsection|
+\item[simple] Add a title page with the section and subsection title before a new |\subsection|
+\item[agenda] Add an agenda overview page with the next subsection highlighted before a new |\subsection|
+\end{description}
+
+\subsection{Debug options}
+
+The \themename theme supports the |grid| switch, which renders a rectangular grid
+in the background of every frame in the presentation and can be used to aid the positioning
+of elements on the page.
+
+To use this feature, simply specify the parameter when loading the theme:
+\begin{lstlisting}
+  \usetheme[
+    grid=on,
+    % ... other options
+  ]{smds}
+  \end{lstlisting}
 
 \section{Implementation}
 \DocInput{../source/beamerthemesmds.dtx}
