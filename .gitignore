@@ -3,6 +3,7 @@
 
 ## CTAN build results
 *.tar.gz
+*.tds.zip
 
 ## Theme files should be generated from ins/dtx
 *.sty
